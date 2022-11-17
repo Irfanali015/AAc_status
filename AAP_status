@@ -1,0 +1,17 @@
+---
+- name:
+  hosts: localhost
+  remote_user: root
+  tasks:
+    - name: Checking the status of services
+      service:
+         name: "{{item}}"
+         state: status
+      loop: 
+          - automation-controller
+          - postgresql
+          - redis
+          - nginx
+          - supervisord
+          - receptor
+      
